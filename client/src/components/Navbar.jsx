@@ -11,7 +11,7 @@ import {useDispatch} from 'react-redux';
 import {setThemeMode} from 'redux/slices/globalSlice';
 import FlexBetween from './FlexBetween';
 
-const NavBar = () => {
+const NavBar = ({setIsSidebarOpen, isSideBarOpen}) => {
   const dispatch = useDispatch();
   const theme = useTheme();
 
@@ -20,7 +20,7 @@ const NavBar = () => {
       <Toolbar sx={{justifyContent: 'space-between'}}>
         {/* Left-Side */}
         <FlexBetween>
-          <IconButton onClick={() => {}}>
+          <IconButton onClick={() => setIsSidebarOpen(!isSideBarOpen)}>
             <MenuIcon />
           </IconButton>
           <FlexBetween

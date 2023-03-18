@@ -10,8 +10,12 @@ import generalRoutes from './routes/general.js';
 import managementRoutes from './routes/management.js';
 import salesRoutes from './routes/sales.js';
 
+// Import data
+// import User from './models/User.js';
+// import {dataUser} from './data/index.js';
+
 //Server Configuration
-dotenv.config()
+dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(helmet());
@@ -33,5 +37,8 @@ mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 }).then(() => {
-    app.listen(PORT, () => console.log(`Server Port: ${PORT}`))
-}).catch((error) => console.log(`${error} did not connect`))
+    app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+    
+    // to add data for the first time to initialize the DB
+    // User.insertMany(dataUser);
+}).catch((error) => console.log(`${error} did not connect`));
