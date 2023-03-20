@@ -1,4 +1,4 @@
-import { AdminPanelSettingsOutlined, CalendarMonthOutlined, ChevronLeft, ChevronRightOutlined, Groups2Outlined, HomeOutlined, PieChartOutlined, PointOfSaleOutlined, PublicOutlined, ReceiptLongOutlined, ShoppingCartOutlined, TodayOutlined, TrendingUpOutlined } from '@mui/icons-material';
+import { AdminPanelSettingsOutlined, CalendarMonthOutlined, ChevronLeft, ChevronRightOutlined, Groups2Outlined, HomeOutlined, PieChartOutlined, PointOfSaleOutlined, PublicOutlined, ReceiptLongOutlined, SettingsOutlined, ShoppingCartOutlined, TodayOutlined, TrendingUpOutlined } from '@mui/icons-material';
 import { Box, Divider, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography, useTheme } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -163,7 +163,7 @@ const Sidebar = ({
               </List>
             </Box>
 
-            {/* <Box position="absolute" bottom="2rem">
+            <Box mt="3rem">
               <Divider />
               <FlexBetween>
                 <Box
@@ -174,15 +174,23 @@ const Sidebar = ({
                   width="40px"
                   borderRadius="50%"
                   sx={{objectFit: "cover"}}
-                >
-                  <Box textAlign="left">
-                    <Typography fontWeight="bold" fontSize="0.9rem" sx={{color: theme.palette.secondary[100]}}>
-                      {user?.name}
-                    </Typography>
-                  </Box>
+                />
+                <Box textAlign="left">
+                  <Typography fontWeight="bold" fontSize="0.9rem" sx={{color: theme.palette.secondary[100]}}>
+                    {user?.name}
+                  </Typography>
+                  <Typography fontSize="0.8rem" sx={{color: theme.palette.secondary[100]}}>
+                    {user?.occupation}
+                  </Typography>
                 </Box>
+                <SettingsOutlined 
+                  sx={{
+                    color: theme.palette.secondary[300],
+                    fontSize: "25px",
+                  }}
+                />
               </FlexBetween>
-            </Box> */}
+            </Box>
           </Drawer>
         )
       }

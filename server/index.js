@@ -13,6 +13,9 @@ import salesRoutes from './routes/sales.js';
 // Import data
 // import User from './models/User.js';
 // import {dataUser} from './data/index.js';
+// import ProductStats from './models/ProductStats.js';
+// import {dataProduct, dataProductStat} from './data/index.js'
+// import Product from './models/Product.js';
 
 //Server Configuration
 dotenv.config();
@@ -41,4 +44,6 @@ mongoose.connect(process.env.MONGO_URL, {
     
     // to add data for the first time to initialize the DB
     // User.insertMany(dataUser);
+    // Product.insertMany(dataProduct);
+    // ProductStats.insertMany(dataProductStat);
 }).catch((error) => console.log(`${error} did not connect`));
