@@ -1,7 +1,7 @@
-import {configureStore} from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import globalReducer from './slices/globalSlice';
 import { setupListeners } from '@reduxjs/toolkit/query';
-import {api} from 'redux/api';
+import { api } from 'redux/api';
 
 export const store = configureStore({
   reducer: {

@@ -1,14 +1,14 @@
-import { Box, useTheme } from '@mui/material'
-import { ResponsiveChoropleth } from '@nivo/geo';
-import Header from 'components/Header';
-import React from 'react'
-import { useGetGeographyQuery } from 'redux/api';
-import { geoData } from 'redux/geoData';
+import { Box, useTheme } from "@mui/material";
+import { ResponsiveChoropleth } from "@nivo/geo";
+import Header from "components/Header";
+import React from "react";
+import { useGetGeographyQuery } from "redux/api";
+import { geoData } from "redux/geoData";
 
 const Geography = () => {
   const theme = useTheme();
 
-  const {data} = useGetGeographyQuery();
+  const { data } = useGetGeographyQuery();
 
   return (
     <Box m="1.5rem 2.5rem">
@@ -19,8 +19,7 @@ const Geography = () => {
         border={`1px solid ${theme.palette.secondary[200]}`}
         borderRadius="4px"
       >
-        {data 
-        ? (
+        {data ? (
           <ResponsiveChoropleth
             data={data}
             theme={{
@@ -93,11 +92,12 @@ const Geography = () => {
               },
             ]}
           />
-        ) 
-        : (<>Loading...</>)}
+        ) : (
+          <>Loading...</>
+        )}
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default Geography
+export default Geography;

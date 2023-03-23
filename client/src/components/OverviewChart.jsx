@@ -1,47 +1,49 @@
-import { useTheme } from '@mui/material';
-import { ResponsiveLine } from '@nivo/line';
-import React, { useMemo } from 'react';
-import { useGetSalesQuery } from 'redux/api';
+import { useTheme } from "@mui/material";
+import { ResponsiveLine } from "@nivo/line";
+import React, { useMemo } from "react";
+import { useGetSalesQuery } from "redux/api";
 
-const OverviewChart = ({isDashboard=false, view}) => {
+const OverviewChart = ({ isDashboard = false, view }) => {
   const theme = useTheme();
-  const {data, isLoading} = useGetSalesQuery();
+  const { data, isLoading } = useGetSalesQuery();
 
   const [totalSalesLine, totalUnitsLine] = useMemo(() => {
     if (!data) return [];
 
-    const {monthlyData} = data;
+    const { monthlyData } = data;
     const totalSalesLine = {
-        id: 'totalSales',
-        color: theme.palette.secondary.main,
-        data: [],
-    }
+      id: "totalSales",
+      color: theme.palette.secondary.main,
+      data: [],
+    };
     const totalUnitsLine = {
-        id: 'totalUnits',
-        color: theme.palette.secondary[600],
-        data: [],
-    }
+      id: "totalUnits",
+      color: theme.palette.secondary[600],
+      data: [],
+    };
 
-    Object.values(monthlyData).reduce((acc, {month, totalSales, totalUnits}) => {
+    Object.values(monthlyData).reduce(
+      (acc, { month, totalSales, totalUnits }) => {
         const curSales = acc.sales + totalSales;
         const curUnits = acc.units + totalUnits;
 
         totalSalesLine.data = [
-            ...totalSalesLine.data,
-            {x: month, y: curSales}
+          ...totalSalesLine.data,
+          { x: month, y: curSales },
         ];
 
         totalUnitsLine.data = [
-            ...totalUnitsLine.data,
-            {x: month, y: curUnits}
-        ]
+          ...totalUnitsLine.data,
+          { x: month, y: curUnits },
+        ];
 
-        return {sales: curSales, units: curUnits}
+        return { sales: curSales, units: curUnits };
+      },
+      { sales: 0, units: 0 }
+    );
 
-    }, {sales: 0, units: 0})
-
-    return [[totalSalesLine], [totalUnitsLine]]
-  }, [data])
+    return [[totalSalesLine], [totalUnitsLine]];
+  }, [data]);
 
   if (!data || isLoading) return "Loading...";
 
@@ -159,7 +161,7 @@ const OverviewChart = ({isDashboard=false, view}) => {
           : undefined
       }
     />
-  )
-}
+  );
+};
 
-export default OverviewChart
+export default OverviewChart;
