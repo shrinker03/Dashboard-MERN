@@ -70,7 +70,7 @@ const navItems = [
     icon: <TodayOutlined />,
   },
   {
-    text: "Monthy",
+    text: "Monthly",
     icon: <CalendarMonthOutlined />,
   },
   {
