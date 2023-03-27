@@ -14,20 +14,21 @@ import salesRoutes from './routes/sales.js';
 // import User from './models/User.js';
 // import {dataUser} from './data/index.js';
 // import ProductStats from './models/ProductStats.js';
-// import {dataProduct, dataProductStat, dataTransaction, dataOverallStat} from './data/index.js'
+// import {dataProduct, dataProductStat, dataTransaction, dataOverallStat, dataAffiliateStat} from './data/index.js'
 // import Product from './models/Product.js';
 // import Transaction from './models/Transaction.js';
 // import OverallStat from './models/OverallStat.js';
+// import AffiliateStat from './models/AffiliateStat.js';
 
 //Server Configuration
 dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(helmet());
-app.use(helmet.crossOriginResourcePolicy({policy: "cross-origin"}));
+app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(morgan("common"));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
 //Routes
@@ -43,11 +44,12 @@ mongoose.connect(process.env.MONGO_URL, {
     useUnifiedTopology: true,
 }).then(() => {
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
-    
+
     // to add data for the first time to initialize the DB
     // User.insertMany(dataUser);
     // Product.insertMany(dataProduct);
     // ProductStats.insertMany(dataProductStat);
     // Transaction.insertMany(dataTransaction);
     // OverallStat.insertMany(dataOverallStat);
+    // AffiliateStat.insertMany(dataAffiliateStat);
 }).catch((error) => console.log(`${error} did not connect`));
