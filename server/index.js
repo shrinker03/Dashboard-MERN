@@ -5,6 +5,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import helmet from 'helmet';
 import morgan from 'morgan';
+import path from 'path';
 import clientRoutes from './routes/client.js';
 import generalRoutes from './routes/general.js';
 import managementRoutes from './routes/management.js';
@@ -36,6 +37,19 @@ app.use("/client", clientRoutes);
 app.use("/general", generalRoutes);
 app.use("/management", managementRoutes);
 app.use("/sales", salesRoutes);
+
+const __dirname = path.resolve()
+
+app.use(express.static(path.join(__dirname, "client/build")));
+
+app.get("*", function (_, res) {
+    res.sendFile(
+        path.join(__dirname, "../client/build/index.html"),
+        function (error) {
+            res.status(500).send(error);
+        }
+    )
+})
 
 //Mongoose Setup
 const PORT = process.env.PORT || 9000;
