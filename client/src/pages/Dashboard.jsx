@@ -1,6 +1,7 @@
 import { DownloadOutlined, Email, PersonAdd, PointOfSale, Traffic } from "@mui/icons-material";
-import { Box, Button, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Button, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
+import BreakdownChart from "components/BreakdownChart";
 import FlexBetween from "components/FlexBetween";
 import Header from "components/Header";
 import OverviewChart from "components/OverviewChart";
@@ -127,6 +128,7 @@ const Dashboard = () => {
           sx={{
             "& .MuiDataGrid-root": {
               border: "none",
+              borderRadius: "5rem",
             },
             "& .MuiDataGrid-cell": {
               borderBottom: "none",
@@ -137,7 +139,7 @@ const Dashboard = () => {
               borderBottom: "none",
             },
             "& .MuiDataGrid-virtualScroller": {
-              backgroundColor: theme.palette.primary.light,
+              backgroundColor: theme.palette.background.alt,
             },
             "& .MuiDataGrid-footerContainer": {
               backgroundColor: theme.palette.background.alt,
@@ -155,6 +157,21 @@ const Dashboard = () => {
             rows={(data && data.transactions) || []}
             columns={columns}
           />
+        </Box>
+        <Box
+          gridColumn="span 4"
+          gridRow="span 3"
+          backgroundColor={theme.palette.background.alt}
+          p="1.5rem"
+          borderRadius="0.55rem"
+        >
+          <Typography>
+            Sales by Category
+          </Typography>
+          <BreakdownChart isDashboard={true} />
+          <Typography>
+            Breakdown of real states and information via category for revenue made for this year and total sales
+          </Typography>
         </Box>
       </Box>
     </Box>
